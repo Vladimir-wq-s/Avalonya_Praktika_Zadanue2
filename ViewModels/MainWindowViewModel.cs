@@ -27,7 +27,7 @@ public partial class MainWindowViewModel : ViewModelBase
 
     public MainWindowViewModel()
     {
-        // Загружаем валюты
+        // Загрузка валюты
         foreach (var c in CurrencyService.GetAllCurrencies())
         {
             Currencies.Add(c);
@@ -56,7 +56,7 @@ public partial class MainWindowViewModel : ViewModelBase
             return;
         }
 
-        // Парсим сумму с учетом локали (разрешаем только числа)
+        // Парсиинг суммы с учётом локали (разрешаем только числа)
         if (!double.TryParse(Amount, NumberStyles.Number, CultureInfo.CurrentCulture, out double amountValue))
         {
             ErrorMessage = "Введите корректное числовое значение суммы.";
