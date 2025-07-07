@@ -1,0 +1,66 @@
+<Window
+    Height="250"
+    Icon="/Assets/avalonia-logo.ico"
+    Title="Avalonya_Praktika_Zadanue2"
+    Width="400"
+    x:Class="Avalonya_Praktika_Zadanue2.Views.MainWindow"
+    x:DataType="vm:MainWindowViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:vm="using:Avalonya_Praktika_Zadanue2.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Window.DataContext>
+        <vm:MainWindowViewModel />
+    </Window.DataContext>
+
+    <StackPanel Margin="20" Spacing="10">
+
+        <TextBlock
+            FontSize="18"
+            FontWeight="Bold"
+            HorizontalAlignment="Center"
+            Text="Конвертер валют" />
+
+        <StackPanel
+            Orientation="Horizontal"
+            Spacing="10"
+            VerticalAlignment="Center">
+            <StackPanel>
+                <TextBlock Text="Из:" />
+                <ComboBox
+                    ItemsSource="{Binding Currencies}"
+                    SelectedItem="{Binding SelectedFromCurrency}"
+                    Width="150" />
+            </StackPanel>
+
+            <StackPanel>
+                <TextBlock Text="В:" />
+                <ComboBox
+                    ItemsSource="{Binding Currencies}"
+                    SelectedItem="{Binding SelectedToCurrency}"
+                    Width="150" />
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel>
+            <TextBlock Text="Сумма:" />
+            <TextBox Text="{Binding Amount, UpdateSourceTrigger=PropertyChanged}" Width="310" />
+        </StackPanel>
+
+        <Button
+            Command="{Binding ConvertCommand}"
+            Content="Конвертировать"
+            Width="310" />
+
+        <TextBlock
+            FontWeight="SemiBold"
+            Foreground="Green"
+            Text="{Binding Result}" />
+
+        <TextBlock
+            FontWeight="Bold"
+            Foreground="Red"
+            Text="{Binding ErrorMessage}" />
+
+    </StackPanel>
+</Window>
